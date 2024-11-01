@@ -1,4 +1,4 @@
-import './global.css';
+import "@ams/ui/styles/global.css";
 
 export const metadata = {
   title: 'Welcome to lms',
