@@ -15,6 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@ams/shared-types": ["libs/shared-types/src/index.ts"],
       "@ams/ui": ["libs/ui/src/ui/index.ts"],
       "@ams/ui/styles/*": ["libs/ui/src/styles/*"],
       "@ams/utils": ["libs/utils/src/index.ts"]
