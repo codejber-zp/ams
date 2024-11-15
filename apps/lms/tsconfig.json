@@ -29,7 +29,8 @@
     "../../apps/lms/.next/types/**/*.ts",
     "../../dist/apps/lms/.next/types/**/*.ts",
     "next-env.d.ts",
-    ".next/types/**/*.ts"
+    ".next/types/**/*.ts",
+    "../../dist/lms/.next/types/**/*.ts"
   ],
   "exclude": [
     "node_modules",

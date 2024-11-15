@@ -4,6 +4,26 @@
   "sourceRoot": "apps/lms",
   "projectType": "application",
   "tags": [],
-  "// targets": "to see all targets run: nx show project lms --web",
-  "targets": {}
+  "targets": {
+    "container": {
+      "executor": "@nx-tools/nx-container:build",
+      "dependsOn": ["build"],
+      "options": {
+        "engine": "docker",
+        "file": "apps/lms/Dockerfile",
+        "context": "apps/lms",
+        "metadata": {
+          "images": ["lms"],
+          "load": true,
+          "tags": [
+            "type=schedule",
+            "type=ref,event=branch",
+            "type=ref,event=tag",
+            "type=ref,event=pr",
+            "type=sha,prefix=sha-"
+          ]
+        }
+      }
+    }
+  }
 }
