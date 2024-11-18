@@ -4,6 +4,23 @@ The purpose is to create all in one solution for associations and other people b
 
 Functionalities are breaked down into multiple applications.
 
+## Prerequisites
+* Node
+* I am using PNPM, can't guarantee other package managers will work.
+* Docker is required to run containers.
+
+## Targets and scripts
+To see all available targets to run for a project, please install Nx Console and spike available Targets, or run:
+```sh
+project=${PROJECT_NAME} pnpm run ls-targets
+```
+with specified project name.
+
+These targets are either [inferred automatically](https://nx.dev/concepts/inferred-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) or defined in the `project.json` or `package.json` files.
+
+[More about running tasks in the docs &raquo;](https://nx.dev/features/run-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+
+
 ## LMS
 LMS is Learning Management System. It is used to manage courses, students, teachers and other related entities.
 
@@ -14,29 +31,18 @@ NextJS based. Dockerized.
 To run the dev server for your app, use:
 
 ```sh
-pnpx nx dev lms
+pnpx nx run lms:dev
 ```
 
 To create a production bundle:
 
 ```sh
-pnpx nx build lms
+pnpx nx run lms:build
 ```
-or to create a production bundle and serve it inside docker container on localhost:3000:
+To create a dev app and serve it inside docker container on localhost:3000:
 ```shell
-pnpx nx run lms:container && docker run -p 3000:3000 lms:main
+pnpx nx run lms:dev-container && docker run -p 3000:3000 lms:${BRANCH_NAME}
 ```
-
-
-To see all available targets to run for a project, run:
-
-```sh
-pnpx nx show project lms
-```
-
-These targets are either [inferred automatically](https://nx.dev/concepts/inferred-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) or defined in the `project.json` or `package.json` files.
-
-[More about running tasks in the docs &raquo;](https://nx.dev/features/run-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
 
 ## Add new projects
 

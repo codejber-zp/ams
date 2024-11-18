@@ -1,10 +1,30 @@
-# This template uses Automatically Copying Traced Files feature
-# so you need to setup your Next Config file to use `output: 'standalone'`
-# Please read this for more information https://nextjs.org/docs/pages/api-reference/next-config-js/output
+FROM docker.io/node:lts-alpine AS environment-setup
+
+RUN npm i -g pnpm nx && \
+	apk add --no-cache \
+	dumb-init
+
+FROM environment-setup AS common
+
+WORKDIR /usr/src/app
+COPY *.json \
+	*.yaml \
+	*.ts \
+	*.js \
+	./
+RUN pnpm i
+
+FROM common AS development
+
+WORKDIR /usr/src/app
+COPY apps/lms ./apps/lms
+COPY libs ./libs
+
+CMD ["nx", "run", "lms:start"]
 
 # Production image, copy all the files and run next
-FROM docker.io/node:lts-alpine AS runner
-RUN apk add --no-cache dumb-init
+FROM environment-setup AS production
+
 ENV NODE_ENV=production
 ENV PORT=3000
 WORKDIR /usr/src/app

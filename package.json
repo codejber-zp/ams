@@ -2,9 +2,9 @@
   "name": "@ams/source",
   "version": "0.0.0",
   "license": "MIT",
-  "nx": {},
   "scripts": {
-    "clean": "rm -rf dist/ node_modules/ tmp/ apps/lms/.next/ && pnpm store prune && pnpx nx reset && pnpm install"
+    "clean": "rm -rf dist/ node_modules/ tmp/ apps/lms/.next/ && pnpm store prune && pnpx nx reset && pnpm install",
+    "ls-targets": "nx show project $project --json | jq -r '.targets | to_entries[] | .key'"
   },
   "private": true,
   "dependencies": {

@@ -5,7 +5,20 @@
   "projectType": "application",
   "tags": [],
   "targets": {
-    "container": {
+    "container-dev": {
+      "executor": "@nx-tools/nx-container:build",
+      "options": {
+        "engine": "docker",
+        "file": "apps/lms/Dockerfile",
+        "metadata": {
+          "images": ["lms"],
+          "load": true,
+          "tags": ["latest"]
+        },
+        "target": "development"
+      }
+    },
+    "container-prod": {
       "executor": "@nx-tools/nx-container:build",
       "dependsOn": ["build"],
       "options": {
@@ -22,7 +35,8 @@
             "type=ref,event=pr",
             "type=sha,prefix=sha-"
           ]
-        }
+        },
+        "target": "production"
       }
     }
   }
