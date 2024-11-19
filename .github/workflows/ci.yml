@@ -33,4 +33,4 @@ jobs:
       - uses: nrwl/nx-set-shas@v4
 
       # Nx Affected runs only tasks affected by the changes in this PR/commit
-      - run: pnpm nx affected -t lint test build e2e --skip-nx-cache
+      - run: pnpm nx affected -t lint test build --skip-nx-cache

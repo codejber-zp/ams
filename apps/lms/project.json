@@ -28,16 +28,13 @@
         "metadata": {
           "images": ["lms"],
           "load": true,
-          "tags": [
-            "type=schedule",
-            "type=ref,event=branch",
-            "type=ref,event=tag",
-            "type=ref,event=pr",
-            "type=sha,prefix=sha-"
-          ]
+          "tags": ["latest-prod"]
         },
         "target": "production"
       }
+    },
+    "serve-static": {
+      "command": "pnpm exec nx run lms:container-prod && docker run -p 3000:3000 lms:latest-prod"
     }
   }
 }
