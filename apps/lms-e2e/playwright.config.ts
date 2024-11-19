@@ -5,6 +5,7 @@ import { workspaceRoot } from '@nx/devkit';
 
 // For CI, you may want to set BASE_URL to the deployed application.
 const baseURL = process.env['BASE_URL'] || 'http://localhost:3000';
+console.log('BASE_URL:', baseURL);
 /**
  * Read environment variables from file.
  * https://github.com/motdotla/dotenv
@@ -24,7 +25,7 @@ export default defineConfig({
   },
   /* Run your local dev server before starting the tests */
   webServer: {
-    command: 'pnpm exec nx run lms:start',
+    command: 'pnpm exec nx run lms:serve-static',
     port: 3000,
     reuseExistingServer: true,
     cwd: workspaceRoot,
